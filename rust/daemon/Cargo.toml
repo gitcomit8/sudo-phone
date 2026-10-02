@@ -1,0 +1,49 @@
+[package]
+name = "phone-auth-daemon"
+version = "0.1.0"
+edition = "2021"
+description = "BLE + PAM authentication daemon for phone-based biometric sudo"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+
+# BLE / D-Bus (BlueZ)
+zbus = { version = "4", features = ["tokio"] }
+zvariant = "4"
+
+# Cryptography — secp256r1 (P-256) for pairing key exchange
+# and HMAC-SHA256 for signed "verified" tokens
+k256 = { version = "0.13", features = ["ecdsa", "arithmetic", "pem"] }
+sha2 = "0.10"
+hmac = "0.12"
+rand = "0.8"
+hex = "0.4"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# CLI
+clap = { version = "4", features = ["derive"] }
+
+# Error handling
+thiserror = "1"
+anyhow = "1"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Paths
+dirs = "5"
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Daemonization
+libc = "0.2"
+
+# UUID for CTAP2
+uuid = { version = "1", features = ["v4"] }
