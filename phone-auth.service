@@ -1,0 +1,23 @@
+[Unit]
+Description=Phone Auth Daemon — BLE + PAM biometric authentication
+After=bluetooth.service
+Wants=bluetooth.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/phone-auth-daemon start --foreground
+Restart=on-failure
+RestartSec=5
+
+# Security hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/etc/phone-auth /run/phone-auth
+PrivateTmp=yes
+
+# Environment
+Environment=RUST_LOG=phone_auth_daemon=info
+
+[Install]
+WantedBy=multi-user.target
