@@ -1,0 +1,16 @@
+# Rust
+rust/daemon/target/
+rust/daemon/*.crate
+
+# Flutter
+flutter/app/.dart_tool/
+flutter/app/build/
+flutter/app/.packages
+flutter/app/analysis_options.overrides
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config (contains keys)
+/etc/phone-auth/
